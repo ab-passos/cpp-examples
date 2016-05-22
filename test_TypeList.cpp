@@ -128,6 +128,14 @@ TEST(TypeList, Replace_double_for_int)
 	ASSERT_EQ(typeid(Replace<List, double, int>::Result), typeid(ResultList));
 }
 
+TEST(TypeList, Replace_only_first_double_for_int)
+{
+	typedef TypeList<double, TypeList<double, NullType> > List;
+
+	typedef TypeList<int, TypeList<double, NullType> > ResultList;
+
+	ASSERT_EQ(typeid(Replace<List, double, int>::Result), typeid(ResultList));
+}
 
 
 int main(int argc, char **argv) {
